@@ -1,36 +1,44 @@
 # Encore
 
-**Pet Karaoke Jam** — Pitch-matching karaoke that sings along with Vox pet voices.
+**Pet Karaoke Jam** — A planned karaoke game for matching a pet melody with voice or tap keys.
 
 Part of [ComputerPets](https://github.com/RicheyWorks/computerpets). Map: [computerpets-ecosystem](https://github.com/RicheyWorks/computerpets-ecosystem).
 
-| | |
+[Status](#status) · [Design](docs/DESIGN.md) · [Contributor start](#contributor-start) · [Ecosystem](https://github.com/RicheyWorks/computerpets-ecosystem)
+
+| Project | At a glance |
 | --- | --- |
-| Status | Design scaffold — loop and engine frozen |
+| Status | Design scaffold; not runnable yet |
 | License | MIT |
 | Tokens | Minigames never mint or burn. Tired overlay, not a dead lineage. |
-| First pet | [Meet Rui first](https://github.com/RicheyWorks/computerpets/blob/main/docs/START-HERE.md). This game is optional. |
+| First pet | [Flagship start guide](https://github.com/RicheyWorks/computerpets/blob/main/docs/START-HERE.md) |
 
-## The loop
+## Status
+
+This repository contains a [design](docs/DESIGN.md) and a [source placeholder](src/index.ts). It has no runnable application, build manifest, automated tests, or CI workflow.
+
+The experience, interfaces, integrations, and safeguards below are **implementation plans**, not supported features. The first implementation slice defines the initial contribution target.
+
+## Planned experience
 
 Vox is the synth. Encore is the game: you match Rui's line. Scoring is pitch + timing, not 'are you a good singer forever'. Babel supplies lyrics.
 
-## Who plays
+## Intended audience
 
 Mic-optional karaoke. Vox is the reference stem.
 
-## What it is not
+## Out of scope
 
 A talent show that stores your voice. Mic upload is opt-in.
 
-## Genre and engine
+## Planned genre and engine
 
 - Genre: **Music pitch-match**
 - Engine: **React / Web Audio**
 - Stack: TypeScript · React 19 · Web Audio API · Vox reference stems · pitch detector
-- Default surface: `8080`
+- Proposed surface: `8080`
 
-## Architecture
+## Proposed integration
 
 ```mermaid
 flowchart LR
@@ -39,41 +47,41 @@ flowchart LR
   cortex -.->|ad-lib| encore
 ```
 
-## How you play
+## Proposed play loop
 
 1. Pick a Lore lullaby or Cortex-safe line.
 2. Pet sings reference (Vox).
 3. You match. Score → treat.
 4. Twitch later: audience picks the song.
 
-## First slice
+## First implementation slice
 
-Build this and stop.
+Initial implementation target:
 
 **One lullaby, Vox reference, pitch score, tap-keys if no mic.**
 
-You know it works when: No mic: tap keys. Vox down: MIDI beep. Raw mic never uploaded by default.
+Acceptance targets: No mic: tap keys. Vox down: MIDI beep. Raw mic never uploaded by default.
 
-## Environment
+## Planned environment
 
 Node 22, mic permission optional
 
-## Failure doctrine
+## Planned safeguards
 
 Mic permission denied → practice with tap keys. Vox down → MIDI beep reference. Never upload raw mic without opt-in.
 
-Canon rules that never yield:
+Design constraints:
 
 - 210 living kinds. No illegal hybrids.
 - Overlay pets can get tired, sick, or hide. Tokens are not burned by a minigame.
 - Desktop walk stays the main quest. Closing Encore must leave Rui walking.
 
-## Neighbors
+## Related projects
 
-- computerpets-vox
-- computerpets-cadence
-- computerpets-babel
-- computerpets-cortex (optional ad-lib)
+- [computerpets-vox](https://github.com/RicheyWorks/computerpets-vox)
+- [computerpets-cadence](https://github.com/RicheyWorks/computerpets-cadence)
+- [computerpets-babel](https://github.com/RicheyWorks/computerpets-babel)
+- [computerpets-cortex](https://github.com/RicheyWorks/computerpets-cortex) (optional ad-lib)
 
 ## Layout
 
@@ -85,13 +93,18 @@ computerpets-encore/
   src/                implementation lands here
 ```
 
-## Run (Windows)
+## Contributor start
+
+With Git and PowerShell, clone the scaffold and read its design and source marker:
 
 ```powershell
-cd app; npm install; npm run dev
+git clone https://github.com/RicheyWorks/computerpets-encore.git
+Set-Location computerpets-encore
+Get-Content .\docs\DESIGN.md
+Get-Content .\src\index.ts
 ```
 
-Meet Rui first via the [flagship start-here](https://github.com/RicheyWorks/computerpets/blob/main/docs/START-HERE.md). This game is optional.
+Start with the [first implementation slice](#first-implementation-slice). Add the minimum project setup and tests needed for that slice, then document verified run commands. The proposed stack above is a design choice; there is no install or launch command for this checkout yet.
 
 ## Links
 
